@@ -1,0 +1,118 @@
+Plan projektu
+1. Funkcjonalności systemu
+
+    Administrator: Zarządzanie budynkami, mieszkaniami, lokatorami, dodawanie wydarzeń, ustawianie opłat, przeglądanie i edytowanie danych.
+    Lokator: Podgląd informacji o mieszkaniu, opłatach, powiadomieniach, zgłaszanie usterek.
+    Moderator: Zarządzanie zgłoszeniami (np. usterkami), dodawanie ogłoszeń, monitorowanie opłat.
+    Powiadomienia: Automatyczne wysyłanie maili do lokatorów (np. przypomnienia o opłatach lub wydarzeniach).
+    Upload plików: Lokatorzy mogą załączać pliki (np. potwierdzenia opłat), administratorzy mogą dodawać dokumenty (np. regulaminy).
+
+2. Encje
+
+Oto propozycja co najmniej 10 encji dla projektu:
+
+    Building: Dane budynku (adres, liczba mieszkań, zarządca).
+    Apartment: Dane mieszkania (numer, powierzchnia, liczba pokoi, budynek, lokatorzy).
+    Tenant: Lokatorzy (imię, nazwisko, PESEL, adres e-mail, role).
+    Role: Role użytkowników (lokator, administrator, moderator).
+    Event: Wydarzenia wspólnotowe (np. zebrania, prace remontowe).
+    Fee: Opłaty (tytuł, kwota, termin, status płatności, lokator).
+    Notification: Powiadomienia (tytuł, treść, data wysłania, typ: email/strona).
+    Issue: Zgłoszenia usterek (opis, status, data zgłoszenia, lokator).
+    Document: Pliki (nazwa, typ, data przesłania, użytkownik).
+    User: Użytkownicy systemu (login, hasło, email, powiązanie z lokatorem lub administratorem).
+
+3. Technologie i narzędzia
+
+    Backend:
+        Język: Java
+        Framework: Spring Boot (Spring MVC, Spring Data JPA, Spring Security)
+        Baza danych: PostgreSQL/MySQL
+    Frontend:
+        HTML, CSS, JavaScript (opcjonalnie framework: Angular/React).
+    Dodatkowe funkcje:
+        Wysyłanie e-maili: Spring Mail
+        Generowanie PDF: Apache PDFBox lub iText
+        Upload plików: Spring Boot Multipart File Upload
+        Internacjonalizacja: Mechanizm i18n w Spring Boot
+    Hosting: Możesz użyć lokalnego serwera (np. Tomcat) lub chmurowych rozwiązań (Heroku, AWS).
+
+4. Podział na moduły
+
+    Moduł użytkowników:
+        Rejestracja, logowanie, różne role.
+        Panel administratora i panel lokatora.
+    Moduł mieszkań:
+        Przegląd budynków, mieszkań, przypisywanie lokatorów.
+    Moduł opłat:
+        Zarządzanie opłatami, przegląd statusów, przypomnienia.
+    Moduł powiadomień:
+        Tworzenie i wysyłka powiadomień (na stronie i e-mailem).
+    Moduł zgłoszeń:
+        Dodawanie i przegląd usterek, status zgłoszeń.
+    Moduł plików:
+        Przesyłanie i przegląd dokumentów (np. regulaminy, potwierdzenia płatności).
+
+5. Wymagania systemowe
+Minimalne:
+
+    Co najmniej 10 encji: Patrz sekcja powyżej.
+    Co najmniej 2 grupy użytkowników:
+        Administrator: Pełny dostęp.
+        Lokator: Dostęp do swojego panelu (opłaty, zgłoszenia, powiadomienia).
+    Walidatory i formatery danych:
+        Walidacja email, telefonów, dat, itp.
+        Formatowanie cen, dat (np. @DateTimeFormat w Spring).
+    Zaawansowana wyszukiwarka:
+        Wyszukiwanie po nazwach budynków, opłatach, zgłoszeniach według statusu.
+    Panel klienta:
+        Lokatorzy widzą status opłat, zgłoszeń i powiadomień.
+    Upload plików:
+        Lokator przesyła potwierdzenia opłat, administrator dodaje dokumenty.
+
+Opcjonalne:
+
+    Wysyłanie maili:
+        Powiadomienia o nowych opłatach, zgłoszeniach lub wydarzeniach.
+        Potwierdzenie rejestracji.
+    Internacjonalizacja:
+        Możliwość przełączania języków (np. PL/EN).
+    Generowanie PDF:
+        Generowanie raportów (np. lista opłat lokatora, wydarzenia budynku).
+    Dodatkowe funkcje:
+        Użycie bibliotek takich jak Lombok (redukcja boilerplate w modelach).
+
+6. Przykładowy plan realizacji
+Etap 1: Przygotowanie projektu
+
+    Utwórz projekt Spring Boot z podstawową konfiguracją.
+    Zdefiniuj model domenowy (encje).
+    Skonfiguruj bazę danych i repozytoria JPA.
+
+Etap 2: Funkcje podstawowe
+
+    Logowanie/rejestracja użytkowników.
+    Dodawanie budynków, mieszkań i lokatorów.
+    Zarządzanie opłatami i zgłoszeniami.
+
+Etap 3: Rozbudowa funkcji
+
+    Dodaj moduł powiadomień (na stronie i e-mail).
+    Zaimplementuj wyszukiwarkę.
+    Obsłuż upload plików (np. przesyłanie potwierdzeń płatności).
+
+Etap 4: Dodatkowe funkcje
+
+    Generowanie PDF z raportami.
+    Dodaj internacjonalizację.
+    Testuj i wdrażaj system.
+
+7. Wzorcowa architektura
+Warstwy aplikacji:
+
+    Warstwa prezentacji (frontend):
+        Wyświetla dane użytkownikom.
+    Warstwa logiki biznesowej (serwisy):
+        Obsługuje operacje na danych.
+    Warstwa dostępu do danych (repozytoria):
+        Interakcje z bazą danych.
