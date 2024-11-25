@@ -1,11 +1,9 @@
 package edu.uph.ii.ppproject.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -13,9 +11,15 @@ import java.util.List;
 @Data
 public class Notification {
     @Id
-    private Long id;
+    private Long notyficationId;
     private String Tittle;
     private String content;
+    private LocalDate date;
     @ManyToMany
+    @JoinTable(
+            name = "notification_user",
+            joinColumns = @JoinColumn(name = "notificationId"),
+            inverseJoinColumns = @JoinColumn(name = "userId")
+    )
     private List<User> users;
 }

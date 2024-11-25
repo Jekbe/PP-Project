@@ -10,11 +10,11 @@ import java.time.LocalDate;
 @Data
 public class Fee {
     @Id
-    private Long id;
-    private String Tittle;
-    private double amount;
+    private Long feeId;
+    private String tittle;
+    private float amount;
     private LocalDate maturity;
     @ManyToOne
-    @JoinColumn(name = "apartment_id")
+    @JoinColumn(name = "apartmentId")
     private Apartment apartment;
 }

@@ -10,11 +10,11 @@ import java.util.List;
 @Data
 public class Building {
     @Id
-    private Long id;
+    private Long buildingId;
     private Address address;
     private int numberOfApartments;
     @ManyToOne
-    @JoinColumn(name = "manager_id")
+    @JoinColumn(name = "managerId")
     private Manager manager;
     @OneToMany(mappedBy = "building")
     private List<Apartment> apartments;

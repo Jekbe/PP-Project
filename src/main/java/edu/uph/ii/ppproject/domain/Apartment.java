@@ -10,15 +10,18 @@ import java.util.List;
 @Data
 public class Apartment {
     @Id
-    private Long id;
+    private Long apartmentId;
     private int number;
-    private double area;
+    private float area;
+    private float price;
     private int numberOfRooms;
     @ManyToOne
-    @JoinColumn(name = "building_id")
+    @JoinColumn(name = "buildingId")
     private Building building;
     @ManyToMany
     private List<Tenant> tenants;
     @OneToMany(mappedBy = "apartment")
     private List<Fee> fees;
+    @ManyToMany
+    private List<Utility> utilities;
 }

@@ -8,9 +8,9 @@ import lombok.Data;
 @Data
 public class Event {
     @Id
-    private Long id;
+    private Long eventId;
     @ManyToOne
-    @JoinColumn(name = "building_id")
+    @JoinColumn(name = "buildingId")
     private Building building;
     private String message;
 }
