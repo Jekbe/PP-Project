@@ -14,7 +14,7 @@ public class Building {
     private Address address;
     private int numberOfApartments;
     @ManyToOne
-    @JoinColumn(name = "managerId")
+    @JoinColumn(name = "manager_id")
     private Manager manager;
     @OneToMany(mappedBy = "building")
     private List<Apartment> apartments;

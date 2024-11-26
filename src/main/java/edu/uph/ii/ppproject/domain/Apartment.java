@@ -16,7 +16,7 @@ public class Apartment {
     private float price;
     private int numberOfRooms;
     @ManyToOne
-    @JoinColumn(name = "buildingId")
+    @JoinColumn(name = "building_id")
     private Building building;
     @ManyToMany
     private List<Tenant> tenants;

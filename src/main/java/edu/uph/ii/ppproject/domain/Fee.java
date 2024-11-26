@@ -15,6 +15,6 @@ public class Fee {
     private float amount;
     private LocalDate maturity;
     @ManyToOne
-    @JoinColumn(name = "apartmentId")
+    @JoinColumn(name = "apartment_id")
     private Apartment apartment;
 }

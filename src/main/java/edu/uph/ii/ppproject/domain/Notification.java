@@ -18,8 +18,8 @@ public class Notification {
     @ManyToMany
     @JoinTable(
             name = "notification_user",
-            joinColumns = @JoinColumn(name = "notificationId"),
-            inverseJoinColumns = @JoinColumn(name = "userId")
+            joinColumns = @JoinColumn(name = "notification_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
     )
     private List<User> users;
 }

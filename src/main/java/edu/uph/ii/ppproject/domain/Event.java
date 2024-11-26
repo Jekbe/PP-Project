@@ -10,7 +10,7 @@ public class Event {
     @Id
     private Long eventId;
     @ManyToOne
-    @JoinColumn(name = "buildingId")
+    @JoinColumn(name = "building_id")
     private Building building;
     private String message;
 }

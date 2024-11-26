@@ -116,3 +116,49 @@ Warstwy aplikacji:
         Obsługuje operacje na danych.
     Warstwa dostępu do danych (repozytoria):
         Interakcje z bazą danych.
+
+
+
+1. Ukończenie encji i relacji
+
+    Upewnij się, że wszystkie relacje między encjami są poprawnie skonfigurowane (np. Many-to-Many z tabelą pośrednią, jeśli jej potrzebujesz).
+    Jeśli jeszcze tego nie zrobiłeś, skonfiguruj testową bazę danych (np. H2 lub inny dialekt).
+
+2. Repozytoria i wstrzykiwanie zależności
+
+    Utwórz repozytoria dla wszystkich encji.
+    Wprowadź podstawowe metody CRUD w każdym repozytorium.
+    Zaplanuj bardziej zaawansowane zapytania (np. filtrowanie, wyszukiwanie), gdy będziesz na etapie "Zaawansowanych zapytań o dane".
+
+3. Serwisy
+
+    Utwórz warstwę serwisów jako pośrednik między kontrolerami a repozytoriami.
+    W serwisach skup się na logice biznesowej: np. obliczanie opłat dla lokatorów, wysyłanie powiadomień.
+
+4. Kontrolery i widoki (Spring MVC + Thymeleaf)
+
+    Zacznij od prostych widoków i kontrolerów, np. lista budynków czy lokatorów.
+    Stopniowo dodawaj formularze i obsługuj dane wejściowe od użytkownika (np. tworzenie nowego budynku, dodawanie lokatora).
+    Używaj walidacji i formatowania, które będą omawiane na zajęciach.
+
+5. Funkcjonalności zaawansowane
+
+    Po wprowadzeniu relacji Many-to-Many na zajęciach, zaimplementuj np. przypisywanie wielu lokatorów do apartamentów.
+    Skoncentruj się na bardziej zaawansowanych zapytaniach: filtrowanie powiadomień, wyszukiwanie mieszkań według ceny itp.
+
+6. Obsługa plików
+
+    Wprowadź funkcję uploadu dokumentów, np. umów czy zdjęć lokatorów/apartamentów.
+
+7. Dodatkowe funkcje (opcjonalne)
+
+    Internacjonalizacja: Jeśli masz czas, dodaj wsparcie dla różnych języków.
+    Wysyłanie maili: Aktywacja konta, powiadomienia o opłatach.
+    Generowanie PDF: Stwórz raport dla administratora lub zestawienie opłat.
+
+8. Testy i optymalizacja
+
+    Przetestuj całość na przykładzie realistycznych danych.
+    Upewnij się, że projekt spełnia wymagania i jest dobrze udokumentowany.
+
+Twoje tematy laboratoryjne sugerują, że każdy etap projektu możesz realizować równolegle z tym, co jest omawiane na zajęciach. Dzięki temu będziesz mógł zadawać pytania, gdy napotkasz problemy. Czy takie podejście Ci odpowiada? 😊
