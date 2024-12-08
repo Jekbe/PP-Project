@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mieszkania</title>
+</head>
+<body>
+    <a th:href="@{/apartmentForm}">Dodaj mieszkanie</a>
+
+    <div th:if="${#lists.isEmpty(apartments)}">
+        <p>Jeszcze nic nie dodano</p>
+    </div>
+
+    <div th:unless="${#lists.isEmpty(apartments)}">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Numer</th>
+                    <th>Powierzchnia</th>
+                    <th>Cena</th>
+                    <th>liczba Pokoi</th>
+                    <th>Budynek</th>
+                    <th>Mieszkańcy</th>
+                    <th>Opłaty</th>
+                    <th>Edytuj</th>
+                    <th>Usuń</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="apartment : ${apartments}">
+                    <td th:text="${apartment.apartmentId}"></td>
+                    <td th:text="${apartment.number}"></td>
+                    <td th:text="${apartment.area}"></td>
+                    <td th:text="${apartment.price}"></td>
+                    <td th:text="${apartment.numberOfRooms}"></td>
+                    <td><a th:href="@{/buildingInfo(Id=${apartment.building.buildingId})}" th:text="${apartment.building.address}"></a></td>
+                    <td><a th:href="@{/tenants(Id=${apartment.apartmentId})}">Mieszkańcy</a></td>
+                    <td><a th:href="@{/fees(Id=${apartment.apartmentId})}">Opłaty</a></td>
+                    <td><a th:href="@{/apartmentForm(Id=${apartment.apartmentId})}">Edytuj</a></td>
+                    <td><a th:href="@{/deleteApartment(Id=${apartment.apartmentId})}">Usuń</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

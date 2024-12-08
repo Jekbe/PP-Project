@@ -23,7 +23,6 @@ public class Building {
     private Manager manager;
     @OneToMany(mappedBy = "building")
     private List<Apartment> apartments;
-    private int numberOfApartments;
     @OneToMany(mappedBy = "building")
     private List<Event> events;
 }

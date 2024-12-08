@@ -1,7 +1,6 @@
 package edu.uph.ii.ppproject.domain;
 
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

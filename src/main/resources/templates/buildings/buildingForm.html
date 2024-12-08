@@ -6,6 +6,7 @@
 </head>
 <body>
     <form th:method="POST" th:object="${building}" th:action="@{/addBuilding}">
+        <input type="hidden" th:field="*{buildingId}" th:value="*{buildingId}">
         <label>
             Miasto:
             <input type="text" th:field="*{address.city}">
@@ -21,9 +22,9 @@
 
         <label>
             Manadżer:
-            <select th:field="*{manager}">
+            <select th:name="manager">
                 <option value="" disabled selected>Wybierz manadżera</option>
-                <option th:each="manager : ${managers}" th:value="${manager}" th:text="${manager}"></option>
+                <option th:each="manager : ${managers}" th:value="${manager.userId}" th:text="${manager}"></option>
             </select>
         </label>
 

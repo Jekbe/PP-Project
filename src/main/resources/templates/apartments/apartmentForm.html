@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nowe mieszkanie</title>
+</head>
+<body>
+    <form th:method="POST" th:object="${apartment}" th:action="@{/addApartment}">
+        <input type="hidden" th:field="*{apartmentId}" th:value="*{apartmentId}">
+        <label>
+            Numer:
+            <input type="text" th:field="*{number}">
+        </label>
+        <label>
+            Powierzchnia:
+            <input type="text" th:field="*{area}">
+        </label>
+        <label>
+            Cena:
+            <input type="text" th:field="*{price}">
+        </label>
+        <label>
+            Liczba pokoi:
+            <input type="text" th:field="*{numberOfRooms}">
+        </label>
+        <label>
+            Budynek:
+            <select th:name="building">
+                <option value="" disabled selected>Wybierz manadżera</option>
+                <option th:each="building : ${buildings}" th:value="${building.buildingId}" th:text="${building.address}"></option>
+            </select>
+        </label>
+
+        <input type="submit">
+    </form>
+</body>
+</html>

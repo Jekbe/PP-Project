@@ -16,4 +16,9 @@ import java.util.List;
 public class Manager extends User{
     @OneToMany(mappedBy = "manager")
     private List<Building> buildings;
+
+    @Override
+    public String toString(){
+        return getFirstName() + " " + getLastName();
+    }
 }

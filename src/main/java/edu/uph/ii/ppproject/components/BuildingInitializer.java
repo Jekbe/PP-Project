@@ -15,7 +15,6 @@ import org.springframework.stereotype.Component;
 public class BuildingInitializer {
     private BuildingRepository buildingRepository;
     private ManagerRepository managerRepository;
-    private ApartmentRepository apartmentRepository;
 
     @Autowired
     public void setBuildingRepository(BuildingRepository buildingRepository){
@@ -27,13 +26,8 @@ public class BuildingInitializer {
         this.managerRepository = managerRepository;
     }
 
-    @Autowired
-    public void setApartmentRepository(ApartmentRepository apartmentRepository){
-        this.apartmentRepository = apartmentRepository;
-    }
-
     @Bean
-    InitializingBean init(){
+    InitializingBean buildingInit(){
         return () -> {
             Manager manager = new Manager();
             manager.setUserId(1L);
@@ -53,9 +47,7 @@ public class BuildingInitializer {
             building.setBuildingId(1L);
             building.setManager(manager);
             building.setAddress(address);
-            building.setNumberOfApartments((int)apartmentRepository.count());
-            if (buildingRepository.count() == 0)
-                buildingRepository.save(building);
+            if (buildingRepository.count() == 0) buildingRepository.save(building);
         };
     }
 }

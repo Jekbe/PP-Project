@@ -43,16 +43,19 @@ public class BuildingController {
     }
 
     @RequestMapping(value = "/addBuilding", method = RequestMethod.POST)
-    public String addBuilding(@ModelAttribute("building") Building building){
-        building.setNumberOfApartments(0);
+    public String addBuilding(@ModelAttribute("building") Building building, @RequestParam("manager") Long managerId){
+        building.setManager(managerRepository.findById(managerId).orElse(null));
+        if (building.getBuildingId() == null) building.setBuildingId(buildingRepository.count() + 1);
+
         buildingRepository.save(building);
 
-        return "redirect:/buildings/buildings";
+        return "redirect:/buildings";
     }
 
     @GetMapping("deleteBuilding")
-    public String deleteBuilding(Model model, @RequestParam(value = "Id") Long id){
+    public String deleteBuilding(@RequestParam("Id") Long id){
         buildingRepository.deleteById(id);
-        return "redirect:/buildings/buildings";
+
+        return "redirect:/buildings";
     }
 }
