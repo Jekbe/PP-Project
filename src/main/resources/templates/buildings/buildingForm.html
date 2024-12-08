@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nowy budynek</title>
+</head>
+<body>
+    <form th:method="POST" th:object="${building}" th:action="@{/addBuilding}">
+        <label>
+            Miasto:
+            <input type="text" th:field="*{address.city}">
+        </label>
+        <label>
+            Ulica:
+            <input type="text" th:field="*{address.streat}">
+        </label>
+        <label>
+            Numer:
+            <input type="text" th:field="*{address.number}">
+        </label>
+
+        <label>
+            Manadżer:
+            <select th:field="*{manager}">
+                <option value="" disabled selected>Wybierz manadżera</option>
+                <option th:each="manager : ${managers}" th:value="${manager}" th:text="${manager}"></option>
+            </select>
+        </label>
+
+        <label>
+            <input type="submit">
+        </label>
+    </form>
+</body>
+</html>

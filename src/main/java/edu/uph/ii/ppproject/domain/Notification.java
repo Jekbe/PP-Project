@@ -2,13 +2,18 @@ package edu.uph.ii.ppproject.domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.List;
 
 @Entity
 @Table
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 public class Notification {
     @Id
     private Long notyficationId;

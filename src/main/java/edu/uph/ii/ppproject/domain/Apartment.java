@@ -2,12 +2,17 @@ package edu.uph.ii.ppproject.domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
 @Entity
 @Table(name = "apartments")
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 public class Apartment {
     @Id
     private Long apartmentId;

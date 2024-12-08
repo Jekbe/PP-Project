@@ -5,6 +5,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
@@ -12,7 +15,9 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "Issues")
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 public class Issue {
     public enum Status{
         Nieodczytane, Odczytane, W_trakcie, Odrzucone, Zrealizowane

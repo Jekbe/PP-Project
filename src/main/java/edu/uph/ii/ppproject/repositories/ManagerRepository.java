@@ -1,7 +1,7 @@
 package edu.uph.ii.ppproject.repositories;
 
-import edu.uph.ii.ppproject.domain.Apartment;
+import edu.uph.ii.ppproject.domain.Manager;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ManagerRepository extends JpaRepository<Apartment, Long> {
+public interface ManagerRepository extends JpaRepository<Manager, Long> {
 }
