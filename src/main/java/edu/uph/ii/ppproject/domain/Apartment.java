@@ -7,11 +7,7 @@ import lombok.Setter;
 
 import java.util.List;
 
-@Entity
-@Table(name = "apartments")
-@Getter
-@Setter
-@NoArgsConstructor
+@Entity @Table(name = "apartments") @Getter @Setter @NoArgsConstructor
 public class Apartment {
     @Id
     private Long apartmentId;
@@ -19,11 +15,10 @@ public class Apartment {
     private float area;
     private float price;
     private int numberOfRooms;
-    @ManyToOne
-    @JoinColumn(name = "building_id")
+    @ManyToOne @JoinColumn(name = "building_id")
     private Building building;
     @ManyToMany
-    private List<Tenant> tenants;
+    private List<User> tenants;
     @OneToMany(mappedBy = "apartment")
     private List<Fee> fees;
     @ManyToMany

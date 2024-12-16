@@ -27,7 +27,7 @@
             Budynek:
             <select th:name="building">
                 <option value="" disabled selected>Wybierz manadżera</option>
-                <option th:each="building : ${buildings}" th:value="${building.buildingId}" th:text="${building.address}"></option>
+                <option th:each="building : ${buildings}" th:value="${building.buildingId}" th:text="${building.address}"/>
             </select>
         </label>
 

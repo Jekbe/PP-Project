@@ -24,7 +24,7 @@
             Manadżer:
             <select th:name="manager">
                 <option value="" disabled selected>Wybierz manadżera</option>
-                <option th:each="manager : ${managers}" th:value="${manager.userId}" th:text="${manager}"></option>
+                <option th:each="manager : ${managers}" th:value="${manager.userId}" th:text="${manager}"/>
             </select>
         </label>
 

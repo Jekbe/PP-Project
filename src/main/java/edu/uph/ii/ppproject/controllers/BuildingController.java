@@ -2,7 +2,7 @@ package edu.uph.ii.ppproject.controllers;
 
 import edu.uph.ii.ppproject.domain.Building;
 import edu.uph.ii.ppproject.repositories.BuildingRepository;
-import edu.uph.ii.ppproject.repositories.ManagerRepository;
+import edu.uph.ii.ppproject.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +13,7 @@ import java.util.List;
 @Controller
 public class BuildingController {
     private BuildingRepository buildingRepository;
-    private ManagerRepository managerRepository;
+    private UserRepository userRepository;
 
     @Autowired
     public void setBuildingRepository(BuildingRepository buildingRepository){
@@ -21,8 +21,8 @@ public class BuildingController {
     }
 
     @Autowired
-    public void setManagerRepository(ManagerRepository managerRepository){
-        this.managerRepository = managerRepository;
+    public void setUserRepository(UserRepository userRepository){
+        this.userRepository = userRepository;
     }
 
     @GetMapping("/buildings")
@@ -36,15 +36,16 @@ public class BuildingController {
     @GetMapping("/buildingForm")
     public String buildingForm(Model model, @RequestParam(value = "Id", required = false) Long id){
         Building building = id != null ? buildingRepository.findById(id).orElse(new Building()) : new Building();
+
         model.addAttribute("building", building);
-        model.addAttribute("managers", managerRepository.findAll());
+        model.addAttribute("managers", userRepository.findAll());
 
         return "buildings/buildingForm";
     }
 
     @RequestMapping(value = "/addBuilding", method = RequestMethod.POST)
     public String addBuilding(@ModelAttribute("building") Building building, @RequestParam("manager") Long managerId){
-        building.setManager(managerRepository.findById(managerId).orElse(null));
+        building.setManager(userRepository.findById(managerId).orElse(null));
         if (building.getBuildingId() == null) building.setBuildingId(buildingRepository.count() + 1);
 
         buildingRepository.save(building);
@@ -57,5 +58,14 @@ public class BuildingController {
         buildingRepository.deleteById(id);
 
         return "redirect:/buildings";
+    }
+
+    @GetMapping("buildingInfo")
+    public String buildingInfo(Model model, @RequestParam("Id") Long id){
+        Building building = buildingRepository.findById(id).orElse(null);
+
+        model.addAttribute("building", building);
+
+        return "buildings/info";
     }
 }

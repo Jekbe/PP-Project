@@ -29,12 +29,12 @@
             </thead>
             <tbody>
                 <tr th:each="apartment : ${apartments}">
-                    <td th:text="${apartment.apartmentId}"></td>
-                    <td th:text="${apartment.number}"></td>
-                    <td th:text="${apartment.area}"></td>
-                    <td th:text="${apartment.price}"></td>
-                    <td th:text="${apartment.numberOfRooms}"></td>
-                    <td><a th:href="@{/buildingInfo(Id=${apartment.building.buildingId})}" th:text="${apartment.building.address}"></a></td>
+                    <td th:text="${apartment.apartmentId}"/>
+                    <td th:text="${apartment.number}"/>
+                    <td th:text="${apartment.area}"/>
+                    <td th:text="${apartment.price}"/>
+                    <td th:text="${apartment.numberOfRooms}"/>
+                    <td><a th:href="@{/buildingInfo(Id=${apartment.building.buildingId})}" th:text="${apartment.building.address}"/></td>
                     <td><a th:href="@{/tenants(Id=${apartment.apartmentId})}">Mieszkańcy</a></td>
                     <td><a th:href="@{/fees(Id=${apartment.apartmentId})}">Opłaty</a></td>
                     <td><a th:href="@{/apartmentForm(Id=${apartment.apartmentId})}">Edytuj</a></td>

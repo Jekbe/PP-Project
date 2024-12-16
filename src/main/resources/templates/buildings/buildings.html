@@ -21,18 +21,20 @@
                     <th>Liczba mieszkań</th>
                     <th>Mieszkania:</th>
                     <th>Wydarzenia</th>
+                    <th>Szczegóły</th>
                     <th>Edytuj</th>
                     <th>Usuń</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="building : ${buildings}">
-                    <td th:text="${building.buildingId}"></td>
-                    <td th:text="${building.address}"></td>
-                    <td th:text="${building.manager}"></td>
-                    <td th:text="${building.apartments.size()}"></td>
+                    <td th:text="${building.buildingId}"/>
+                    <td th:text="${building.address}"/>
+                    <td th:text="${building.manager}"/>
+                    <td th:text="${building.apartments.size()}"/>
                     <td><a th:href="@{/apartments(Id=${building.buildingId})}">mieszkania</a></td>
                     <td><a th:href="@{/events(Id=${building.buildingId})}">wydarzenia</a></td>
+                    <td><a th:href="@{/buildingInfo(Id=${building.buildingId})}">Szczegóły</a></td>
                     <td><a th:href="@{/buildingForm(Id=${building.buildingId})}">Edytuj</a></td>
                     <td><a th:href="@{/deleteBuilding(Id=${building.buildingId})}">Usuń</a></td>
                 </tr>

@@ -7,20 +7,14 @@ import lombok.Setter;
 
 import java.util.List;
 
-@Entity
-@Table(name = "Buildings")
-@Getter
-@Setter
-@NoArgsConstructor
+@Entity @Table(name = "Buildings") @Getter @Setter @NoArgsConstructor
 public class Building {
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long buildingId;
     @Embedded
     private Address address;
-
-    @ManyToOne
-    @JoinColumn(name = "manager_id")
-    private Manager manager;
+    @ManyToOne @JoinColumn(name = "user_id")
+    private User manager;
     @OneToMany(mappedBy = "building")
     private List<Apartment> apartments;
     @OneToMany(mappedBy = "building")

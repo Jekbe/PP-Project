@@ -29,8 +29,11 @@ public class ApartmentController {
     }
 
     @GetMapping("apartments")
-    public String apartments(Model model) {
-        List<Apartment> apartments = apartmentRepository.findAll();
+    public String apartments(Model model, @RequestParam(value = "Id", required = false) Long id) {
+        List<Apartment> apartments;
+        if (id == null) apartments = apartmentRepository.findAll();
+        else apartments = apartmentRepository.findApartmentByBuilding_BuildingId(id);
+
         model.addAttribute("apartments", apartments);
 
         return "apartments/apartments";
@@ -39,6 +42,7 @@ public class ApartmentController {
     @GetMapping("apartmentForm")
     public String apartmentForm(Model model, @RequestParam(value = "Id", required = false) Long id) {
         Apartment apartment = id != null ? apartmentRepository.findById(id).orElse(new Apartment()) : new Apartment();
+
         model.addAttribute("apartment", apartment);
         model.addAttribute("buildings", buildingRepository.findAll());
 
@@ -49,6 +53,7 @@ public class ApartmentController {
     public String addApartment(@ModelAttribute("apartment") Apartment apartment, @RequestParam("building") Long buildingId) {
         apartment.setBuilding(buildingRepository.findById(buildingId).orElse(null));
         if (apartment.getApartmentId() == null) apartment.setApartmentId(apartmentRepository.count() + 1);
+
         apartmentRepository.save(apartment);
 
         return "redirect:/apartments";
