@@ -1,19 +1,21 @@
 package edu.uph.ii.ppproject.components;
 
-import edu.uph.ii.ppproject.domain.Address;
-import edu.uph.ii.ppproject.domain.Building;
-import edu.uph.ii.ppproject.domain.User;
+import edu.uph.ii.ppproject.domain.*;
+import edu.uph.ii.ppproject.repositories.ApartmentRepository;
 import edu.uph.ii.ppproject.repositories.BuildingRepository;
 import edu.uph.ii.ppproject.repositories.UserRepository;
+import edu.uph.ii.ppproject.repositories.UtilityRepository;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BuildingInitializer {
+public class DataInitializer {
     private BuildingRepository buildingRepository;
     private UserRepository userRepository;
+    private ApartmentRepository apartmentRepository;
+    private UtilityRepository utilityRepository;
 
     @Autowired
     public void setBuildingRepository(BuildingRepository buildingRepository){
@@ -23,6 +25,16 @@ public class BuildingInitializer {
     @Autowired
     public void setUserRepository(UserRepository userRepository){
         this.userRepository = userRepository;
+    }
+
+    @Autowired
+    public void setApartmentRepository(ApartmentRepository apartmentRepository) {
+        this.apartmentRepository = apartmentRepository;
+    }
+
+    @Autowired
+    public void setUtilityInitializer(UtilityRepository utilityRepository){
+        this.utilityRepository = utilityRepository;
     }
 
     @Bean
@@ -49,6 +61,33 @@ public class BuildingInitializer {
             building.setManager(manager);
             building.setAddress(address);
             if (buildingRepository.count() == 0) buildingRepository.save(building);
+        };
+    }
+
+    @Bean
+    InitializingBean ApartmentInit(){
+        return () -> {
+            Building building = buildingRepository.getReferenceById(1L);
+
+            Apartment apartment = new Apartment();
+            apartment.setApartmentId(1L);
+            apartment.setNumber(1);
+            apartment.setArea(50);
+            apartment.setPrice(400_000);
+            apartment.setNumberOfRooms(3);
+            apartment.setBuilding(building);
+            if (apartmentRepository.count() == 0) apartmentRepository.save(apartment);
+        };
+    }
+
+    @Bean
+    InitializingBean UtilityInit(){
+        return () -> {
+            Utility utility = new Utility();
+            utility.setUtilityId(1L);
+            utility.setType("Lodówka");
+            utility.setPrice(500);
+            if (utilityRepository.count() == 0) utilityRepository.save(utility);
         };
     }
 }
