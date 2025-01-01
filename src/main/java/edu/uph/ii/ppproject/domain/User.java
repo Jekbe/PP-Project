@@ -1,15 +1,13 @@
 package edu.uph.ii.ppproject.domain;
 
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.AssertTrue;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity @Table(name = "users") @Getter @Setter @NoArgsConstructor
 public class User {
@@ -18,11 +16,10 @@ public class User {
     private String firstName;
     private String lastName;
     private String pesel;
-    //@Size(min = 4, max = 36) //@UniqueUsername
     private String email;
-    //@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,20}$")
     private String password;
-    @Transient//nie będzie odwzorowana w db
+    private String activationCode = UUID.randomUUID().toString();
+    @Transient
     private String passwordConfirm;
     private boolean enabled = false;
     @ManyToMany(fetch = FetchType.EAGER) @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))

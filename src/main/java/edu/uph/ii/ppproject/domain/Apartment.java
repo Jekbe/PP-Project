@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity @Table(name = "apartments") @Getter @Setter @NoArgsConstructor
 public class Apartment {
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long apartmentId;
     private int number;
     private float area;

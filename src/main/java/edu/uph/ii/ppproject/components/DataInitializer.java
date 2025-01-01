@@ -48,7 +48,7 @@ public class DataInitializer {
             manager.setEmail("jan.kowalski@spoldzielnia.com");
             manager.setPassword("haslo1234");
             manager.setPasswordConfirm("haslo1234");
-            manager.setEnabled(true);
+            //manager.setEnabled(true);
             if (userRepository.count() == 0) userRepository.save(manager);
 
             Address address = new Address();

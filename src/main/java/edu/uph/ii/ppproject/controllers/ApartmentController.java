@@ -65,4 +65,11 @@ public class ApartmentController {
 
         return "redirect:/apartments";
     }
+
+    @GetMapping("apartmentInfo")
+    public String apartmentInfo(@RequestParam("Id") Long id){
+        Apartment apartment = apartmentRepository.getReferenceById(id);
+
+        return "apartments/info";
+    }
 }

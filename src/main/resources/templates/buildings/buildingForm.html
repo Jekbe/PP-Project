@@ -2,34 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Nowy budynek</title>
+    <title th:text="#{form.title}"/>
 </head>
+<a th:href="@{?lang=en}">English</a>
+<a th:href="@{?lang=pl}">Polski</a>
 <body>
     <form th:method="POST" th:object="${building}" th:action="@{/addBuilding}">
         <input type="hidden" th:field="*{buildingId}" th:value="*{buildingId}">
         <label>
-            Miasto:
+            <span th:text="#{form.city}"/>
             <input type="text" th:field="*{address.city}">
         </label>
         <label>
-            Ulica:
+            <span th:text="#{form.street}"/>
             <input type="text" th:field="*{address.streat}">
         </label>
         <label>
-            Numer:
+            <span th:text="#{form.number}"/>
             <input type="text" th:field="*{address.number}">
         </label>
 
         <label>
-            Manadżer:
+            <span th:text="#{form.manager}"/>
             <select th:name="manager">
-                <option value="" disabled selected>Wybierz manadżera</option>
+                <option value="" disabled selected th:text="#{form.selectManager}"/>
                 <option th:each="manager : ${managers}" th:value="${manager.userId}" th:text="${manager}"/>
             </select>
         </label>
 
         <label>
-            <input type="submit">
+            <input type="submit" th:value="#{form.submit}">
         </label>
     </form>
 </body>

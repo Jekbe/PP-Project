@@ -11,14 +11,10 @@ import java.util.Set;
  * Created by grzesiek on 23.08.2017.
  */
 
-@Entity
-@Table(name = "roles")
-@Getter @Setter
-@NoArgsConstructor
+@Entity @Table(name = "roles") @Getter @Setter @NoArgsConstructor
 public class Role {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Enumerated(EnumType.STRING)//przechowywane w bazie w postaci string
     private Types type;
@@ -30,8 +26,9 @@ public class Role {
     }
 
     public enum Types{
-        ROLE_ADMIN,
-        ROLE_USER
+        ADMINISTRATOR,
+        ZARZADCA,
+        LOKATOR
     }
 
 }

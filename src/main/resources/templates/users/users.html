@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Użytkownicy</title>
+</head>
+<body>
+    <!-- Link do formularza dodawania nowego użytkownika -->
+    <a th:href="@{/userForm}">Dodaj użytkownika</a>
+
+    <!-- Warunek: jeśli lista użytkowników jest pusta -->
+    <div th:if="${#lists.isEmpty(users)}">
+        <p>Jeszcze nic nie dodano</p>
+    </div>
+
+    <!-- Warunek: jeśli lista użytkowników nie jest pusta -->
+    <div th:unless="${#lists.isEmpty(users)}">
+        <table border="1">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th>PESEL</th>
+                <th>Email</th>
+                <th>Aktywacja</th>
+                <th>Aktywny</th>
+                <th>Role</th>
+                <th>Szczegóły</th>
+                <th>Edytuj</th>
+                <th>Usuń</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Iteracja po liście użytkowników -->
+            <tr th:each="user : ${users}">
+                <td th:text="${user.userId}"></td>
+                <td th:text="${user.firstName}"></td>
+                <td th:text="${user.lastName}"></td>
+                <td th:text="${user.pesel}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.activationCode}"></td>
+                <td th:text="${user.enabled} ? 'Tak' : 'Nie'"></td>
+                <td>
+                    <!-- Wyświetlanie ról użytkownika -->
+                    <span th:each="role, iterStat : ${user.roles}">
+                                <span th:text="${role.name}"></span>
+                                <span th:if="${!iterStat.last}">, </span>
+                            </span>
+                </td>
+                <!-- Link do szczegółów użytkownika -->
+                <td>
+                    <a th:href="@{/userInfo(Id=${user.userId})}">Szczegóły</a>
+                </td>
+                <!-- Link do edycji użytkownika -->
+                <td>
+                    <a th:href="@{/userForm(Id=${user.userId})}">Edytuj</a>
+                </td>
+                <!-- Link do usuwania użytkownika -->
+                <td>
+                    <a th:href="@{/deleteUser(Id=${user.userId})}" onclick="return confirm('Czy na pewno chcesz usunąć użytkownika?');">Usuń</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
