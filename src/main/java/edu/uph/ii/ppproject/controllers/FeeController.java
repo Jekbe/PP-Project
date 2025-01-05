@@ -40,5 +40,25 @@ public class FeeController {
     }
 
     @RequestMapping("addFee")
-    public String addFee(@ModelAttribute())
+    public String addFee(@ModelAttribute("fee") Fee fee){
+        feeRepository.save(fee);
+
+        return "redirect:/fees";
+    }
+
+    @GetMapping("deleteFee")
+    public String deleteFee(@RequestParam("Id") Long id){
+        feeRepository.deleteById(id);
+
+        return "redirect:/fees";
+    }
+
+    @GetMapping("feeInfo")
+    public String feeInfo(Model model, @RequestParam("Id") Long id){
+        Fee fee = feeRepository.getReferenceById(id);
+
+        model.addAttribute("fee", fee);
+
+        return "fees/info";
+    }
 }
