@@ -85,7 +85,7 @@ public class DataInitializer {
         return () -> {
             Utility utility = new Utility();
             utility.setUtilityId(1L);
-            utility.setType("Lodówka");
+            utility.setName("Lodówka");
             utility.setPrice(500);
             if (utilityRepository.count() == 0) utilityRepository.save(utility);
         };

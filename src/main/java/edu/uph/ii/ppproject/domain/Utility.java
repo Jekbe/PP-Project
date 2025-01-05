@@ -9,6 +9,7 @@ import lombok.Setter;
 public class Utility {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long utilityId;
-    private String type;
+    private String name;
+    private String description;
     private float price;
 }

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Szczegóły</title>
+</head>
+<body>
+    <h1>Szczegóły mieszkania</h1>
+
+    <div>
+        <h2>Podstawowe informacje</h2>
+        <p><strong>Numer:</strong> <span th:text="${apartment.number}"></span></p>
+        <p><strong>Powierzchnia:</strong> <span th:text="${apartment.area}"></span> m²</p>
+        <p><strong>Cena:</strong> <span th:text="${apartment.price}"></span> PLN</p>
+        <p><strong>Liczba pokoi:</strong> <span th:text="${apartment.numberOfRooms}"></span></p>
+    </div>
+
+    <div>
+        <h2>Budynek</h2>
+        <p><strong>Adres:</strong> <span th:text="${apartment.building.address}"></span></p>
+    </div>
+
+    <div>
+        <h2>Najemcy</h2>
+        <ul>
+            <li th:each="tenant : ${apartment.tenants}">
+                <span th:text="${tenant}"></span>
+            </li>
+        </ul>
+    </div>
+
+    <div>
+        <h2>Opłaty</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Typ</th>
+                <th>Kwota</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="fee : ${apartment.fees}">
+                <td th:text="${fee.maturity}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <h2>Udogodnienia</h2>
+        <ul>
+            <li th:each="utility : ${apartment.utilities}">
+                <span th:text="${utility.name}"></span>
+            </li>
+        </ul>
+    </div>
+
+    <div>
+        <a href="/apartments">Powrót do listy mieszkań</a>
+        <a th:href="@{/apartmentForm(id=${apartment.apartmentId})}">Edytuj</a>
+        <a th:href="@{/deleteApartment(id=${apartment.apartmentId})}">Usuń</a>
+    </div>
+</body>
+</html>

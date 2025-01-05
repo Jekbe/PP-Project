@@ -23,6 +23,7 @@
                     <th>Budynek</th>
                     <th>Mieszkańcy</th>
                     <th>Opłaty</th>
+                    <th>Szczegóły</th>
                     <th>Edytuj</th>
                     <th>Usuń</th>
                 </tr>
@@ -37,6 +38,7 @@
                     <td><a th:href="@{/buildingInfo(Id=${apartment.building.buildingId})}" th:text="${apartment.building.address}"/></td>
                     <td><a th:href="@{/tenants(Id=${apartment.apartmentId})}">Mieszkańcy</a></td>
                     <td><a th:href="@{/fees(Id=${apartment.apartmentId})}">Opłaty</a></td>
+                    <td><a th:href="@{/apartmentInfo(Id=${apartment.apartmentId})}">Szczegóły</a></td>
                     <td><a th:href="@{/apartmentForm(Id=${apartment.apartmentId})}">Edytuj</a></td>
                     <td><a th:href="@{/deleteApartment(Id=${apartment.apartmentId})}">Usuń</a></td>
                 </tr>
