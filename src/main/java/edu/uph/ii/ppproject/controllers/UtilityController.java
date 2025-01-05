@@ -54,4 +54,13 @@ public class UtilityController {
 
         return "redirect:/utilities";
     }
+
+    @GetMapping("/utilityInfo")
+    public String utilityInfo(Model model, @RequestParam("Id") Long id){
+        Utility utility = utilityRepository.getReferenceById(id);
+
+        model.addAttribute("utility", utility);
+
+        return "utilities/info";
+    }
 }

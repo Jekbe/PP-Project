@@ -46,7 +46,6 @@ public class BuildingController {
     @RequestMapping(value = "/addBuilding", method = RequestMethod.POST)
     public String addBuilding(@ModelAttribute("building") Building building, @RequestParam("manager") Long managerId){
         building.setManager(userRepository.findById(managerId).orElse(null));
-        if (building.getBuildingId() == null) building.setBuildingId(buildingRepository.count() + 1);
 
         buildingRepository.save(building);
 

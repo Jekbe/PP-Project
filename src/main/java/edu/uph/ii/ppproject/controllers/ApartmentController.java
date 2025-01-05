@@ -29,7 +29,7 @@ public class ApartmentController {
     }
 
     @GetMapping("apartments")
-    public String apartments(Model model, @RequestParam(value = "Id", required = false) Long id) {
+    public String apartmentList(Model model, @RequestParam(value = "Id", required = false) Long id) {
         List<Apartment> apartments;
         if (id == null) apartments = apartmentRepository.findAll();
         else apartments = apartmentRepository.findApartmentByBuilding_BuildingId(id);
@@ -52,7 +52,6 @@ public class ApartmentController {
     @RequestMapping("addApartment")
     public String addApartment(@ModelAttribute("apartment") Apartment apartment, @RequestParam("building") Long buildingId) {
         apartment.setBuilding(buildingRepository.findById(buildingId).orElse(null));
-        if (apartment.getApartmentId() == null) apartment.setApartmentId(apartmentRepository.count() + 1);
 
         apartmentRepository.save(apartment);
 
@@ -67,8 +66,10 @@ public class ApartmentController {
     }
 
     @GetMapping("apartmentInfo")
-    public String apartmentInfo(@RequestParam("Id") Long id){
+    public String apartmentInfo(Model model, @RequestParam("Id") Long id){
         Apartment apartment = apartmentRepository.getReferenceById(id);
+
+        model.addAttribute("apartment", apartment);
 
         return "apartments/info";
     }

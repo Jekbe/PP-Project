@@ -2,7 +2,6 @@ package edu.uph.ii.ppproject.controllers;
 
 import edu.uph.ii.ppproject.domain.User;
 import edu.uph.ii.ppproject.repositories.UserRepository;
-import jakarta.mail.SendFailedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -57,6 +56,15 @@ public class UserController {
         userRepository.deleteById(id);
 
         return "redirect:/users";
+    }
+
+    @GetMapping("/userInfo")
+    public String userInfo(Model model, @RequestParam("Id") Long id){
+        User user = userRepository.getReferenceById(id);
+
+        model.addAttribute("user", user);
+
+        return "users/info";
     }
 
     public void sendSimpleMessage(String to, String subject, String text) {
