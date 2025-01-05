@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -18,7 +21,7 @@ public class FeeController {
         this.feeRepository = feeRepository;
     }
 
-    @GetMapping("/fees")
+    @GetMapping("fees")
     public String feeList(Model model) {
         List<Fee> fees = feeRepository.findAll();
 
@@ -26,4 +29,16 @@ public class FeeController {
 
         return "fees/fees";
     }
+
+    @GetMapping("feeForm")
+    public String feeForm(Model model, @RequestParam(value = "Id", required = false) Long id){
+        Fee fee = id != null ? feeRepository.findById(id).orElse(new Fee()) :new Fee();
+
+        model.addAttribute("fee", fee);
+
+        return "fees/feeForm";
+    }
+
+    @RequestMapping("addFee")
+    public String addFee(@ModelAttribute())
 }
