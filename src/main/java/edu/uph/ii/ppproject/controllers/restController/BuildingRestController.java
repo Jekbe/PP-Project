@@ -4,7 +4,6 @@ import edu.uph.ii.ppproject.domain.Building;
 import edu.uph.ii.ppproject.exceptions.BuildingNotFoundException;
 import edu.uph.ii.ppproject.services.BuildingService;
 import jakarta.servlet.http.HttpServletRequest;
-import lombok.extern.log4j.Log4j;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
