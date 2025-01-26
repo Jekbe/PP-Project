@@ -5,6 +5,39 @@
     <title>Nowe powiadomienie</title>
 </head>
 <body>
+    <h1 th:text="${notification.notyficationId == null ? 'Add New Notification' : 'Edit Notification'}"></h1>
 
+    <form th:action="@{/addNotification}" th:object="${notification}" method="post">
+        <input type="hidden" th:field="*{notyficationId}"/>
+
+        <div>
+            <label for="tittle">Title:</label>
+            <input type="text" id="tittle" th:field="*{tittle}" required/>
+        </div>
+
+        <div>
+            <label for="content">Content:</label>
+            <textarea id="content" th:field="*{content}" required></textarea>
+        </div>
+
+        <div>
+            <label for="date">Date:</label>
+            <input type="date" id="date" th:field="*{date}" required/>
+        </div>
+
+        <div>
+            <label for="users">Users:</label>
+            <select id="users" th:field="*{users}" multiple>
+                <option th:each="user : ${users}"
+                        th:value="${user}"
+                        th:text="${user}"></option>
+            </select>
+        </div>
+
+        <div>
+            <button type="submit">Save</button>
+            <a th:href="@{/notifications}">Cancel</a>
+        </div>
+    </form>
 </body>
 </html>

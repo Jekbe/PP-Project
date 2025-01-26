@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dokumenty</title>
+</head>
+<body>
+    <h1>Documents</h1>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Upload Date</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="document : ${documents}">
+            <td th:text="${document.name}">Document Name</td>
+            <td th:text="${#dates.format(document.uploadDate, 'yyyy-MM-dd HH:mm')}">Upload Date</td>
+            <td>
+                <a th:href="@{/downloadDocument(Id=${document.id})}">Download</a>
+                |
+                <a th:href="@{/deleteDocument(Id=${document.id})}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>

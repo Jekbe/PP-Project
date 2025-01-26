@@ -5,6 +5,47 @@
     <title>Nowa opłata</title>
 </head>
 <body>
+    <h1 th:text="${fee.feeId == null ? 'Add New Fee' : 'Edit Fee'}"></h1>
 
+    <form th:action="@{/addFee}" th:object="${fee}" method="post">
+        <input type="hidden" th:field="*{feeId}"/>
+
+        <div>
+            <label for="tittle">Title:</label>
+            <input type="text" id="tittle" th:field="*{tittle}" required/>
+        </div>
+
+        <div>
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" th:field="*{amount}" step="0.01" required/>
+        </div>
+
+        <div>
+            <label for="maturity">Maturity Date:</label>
+            <input type="date" id="maturity" th:field="*{maturity}" required/>
+        </div>
+
+        <div>
+            <label for="apartment">Apartment:</label>
+            <select id="apartment" th:field="*{apartment}" required>
+                <option th:each="apartment : ${apartments}"
+                        th:value="${apartment}"
+                        th:text="${apartment.number}"></option>
+            </select>
+        </div>
+
+        <div>
+            <label for="status">Status:</label>
+            <select id="status" th:field="*{status}" required>
+                <option value="OPLACONE">Oplacone</option>
+                <option value="NIE_OPLACONE">Nie Oplacone</option>
+            </select>
+        </div>
+
+        <div>
+            <button type="submit">Save</button>
+            <a th:href="@{/fees}">Cancel</a>
+        </div>
+    </form>
 </body>
 </html>

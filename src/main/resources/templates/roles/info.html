@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Szczegóły</title>
+</head>
+<body>
+    <h1>Role Details</h1>
+
+    <p><strong>ID:</strong> <span th:text="${role.id}"></span></p>
+    <p><strong>Type:</strong> <span th:text="${role.type}"></span></p>
+    <p><strong>Users:</strong></p>
+    <ul>
+        <li th:each="user : ${role.users}" th:text="${user}"></li>
+    </ul>
+
+    <div>
+        <a th:href="@{/roleForm(id=${role.id})}">Edit</a>
+        <a th:href="@{/roles}">Back to List</a>
+    </div>
+</body>
+</html>

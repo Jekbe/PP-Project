@@ -1,10 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Wydarzenia</title>
+    <title>Event List</title>
 </head>
 <body>
+    <h1>Wydarzenia</h1>
 
+    <a th:href="@{/eventForm}">Add New Event</a>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Building</th>
+            <th>Message</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="event : ${events}">
+            <td th:text="${event.name}"></td>
+            <td th:text="${event.building.address.street}"></td> <!-- Assuming building has an address -->
+            <td th:text="${event.message}"></td>
+            <td>
+                <a th:href="@{/eventInfo(eventId=${event.eventId})}">View</a> |
+                <a th:href="@{/eventForm(eventId=${event.eventId})}">Edit</a> |
+                <a th:href="@{/deleteEvent(eventId=${event.eventId})}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </body>
 </html>

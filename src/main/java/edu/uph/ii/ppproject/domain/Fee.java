@@ -16,4 +16,10 @@ public class Fee {
     private LocalDate maturity;
     @ManyToOne @JoinColumn(name = "apartment_id")
     private Apartment apartment;
+    private Status status;
+
+    public enum Status{
+        OPLACONE,
+        NIE_OPLACONE
+    }
 }

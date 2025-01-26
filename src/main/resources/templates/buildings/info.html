@@ -2,13 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Szczegóły</title>
+    <title>Szczegóły budynku</title>
 </head>
 <body>
-    <div th:object="${building}">
-        <h3 th:text="*{buildingId}"/>
-        <h1 th:text="*{address}"/>
+    <h1>Szczegóły budynku</h1>
 
+    <div>
+        <h2>Podstawowe informacje</h2>
+        <p><strong>Adres:</strong> <span th:text="${building.address}"></span></p>
+        <p><strong>Manager:</strong> <span th:text="${building.manager}"></span></p>
+    </div>
+
+    <div>
+        <h2>Apartamenty</h2>
+        <ul>
+            <li th:each="apartment : ${building.apartments}">
+                <a th:href="@{/apartmentInfo(Id=${apartment.apartmentId})}" th:text="'Numer ' + ${apartment.number}"></a>
+            </li>
+        </ul>
+    </div>
+
+    <div>
+        <h2>Wydarzenia</h2>
+        <ul>
+            <li th:each="event : ${building.events}">
+                <a th:href="@{/eventInfo(Id=${event.eventId})}" th:text="${event.name}"></a>
+            </li>
+        </ul>
+    </div>
+
+    <div>
+        <a href="/buildings">Powrót do listy budynków</a>
+        <a th:href="@{/buildingForm(id=${building.buildingId})}">Edytuj</a>
+        <a th:href="@{/deleteBuilding(id=${building.buildingId})}">Usuń</a>
     </div>
 </body>
 </html>

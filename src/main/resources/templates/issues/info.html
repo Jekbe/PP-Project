@@ -5,6 +5,16 @@
     <title>Szczegóły</title>
 </head>
 <body>
+    <h1>Issue Details</h1>
 
+    <p><strong>Description:</strong> <span th:text="${issue.descryption}"></span></p>
+    <p><strong>Date:</strong> <span th:text="${issue.date}"></span></p>
+    <p><strong>Status:</strong> <span th:text="${issue.status}"></span></p>
+    <p><strong>Tenant:</strong> <span th:text="${issue.tenant}"></span></p>
+
+    <div>
+        <a th:href="@{/issueForm(issueId=${issue.issueId})}">Edit</a>
+        <a th:href="@{/issues}">Back to List</a>
+    </div>
 </body>
 </html>

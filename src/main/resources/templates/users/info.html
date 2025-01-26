@@ -5,6 +5,17 @@
     <title>Szczegóły</title>
 </head>
 <body>
+    <h1>User Details</h1>
 
+    <p><strong>ID:</strong> <span th:text="${user.userId}"></span></p>
+    <p><strong>First Name:</strong> <span th:text="${user.firstName}"></span></p>
+    <p><strong>Last Name:</strong> <span th:text="${user.lastName}"></span></p>
+    <p><strong>Email:</strong> <span th:text="${user.email}"></span></p>
+    <p><strong>Roles:</strong> <span th:each="role : ${user.roles}" th:text="${role.type}"></span></p>
+
+    <div>
+        <a th:href="@{/userForm(id=${user.userId})}">Edit</a>
+        <a th:href="@{/users}">Back to List</a>
+    </div>
 </body>
 </html>

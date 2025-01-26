@@ -9,6 +9,7 @@ import lombok.Setter;
 public class Event {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long eventId;
+    private String name;
     @ManyToOne @JoinColumn(name = "building_id")
     private Building building;
     private String message;

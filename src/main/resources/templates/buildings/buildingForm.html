@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <title> Nowy budynek </title>
 </head>
-<a th:href="@{?lang=en}">English</a>
-<a th:href="@{?lang=pl}">Polski</a>
 <body>
     <form th:method="POST" th:object="${building}" th:action="@{/addBuilding}">
         <input type="hidden" th:field="*{buildingId}" th:value="*{buildingId}">
@@ -15,7 +13,7 @@
         </label>
         <label>
             <span th:text="#{form.street}"/>
-            <input type="text" th:field="*{address.streat}">
+            <input type="text" th:field="*{address.street}">
         </label>
         <label>
             <span th:text="#{form.number}"/>

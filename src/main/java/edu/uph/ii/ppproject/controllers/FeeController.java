@@ -1,6 +1,8 @@
 package edu.uph.ii.ppproject.controllers;
 
+import edu.uph.ii.ppproject.domain.Apartment;
 import edu.uph.ii.ppproject.domain.Fee;
+import edu.uph.ii.ppproject.repositories.ApartmentRepository;
 import edu.uph.ii.ppproject.repositories.FeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,10 +17,15 @@ import java.util.List;
 @Controller
 public class FeeController {
     private FeeRepository feeRepository;
+    private ApartmentRepository apartmentRepository;
 
     @Autowired
     public void setFeeRepository(FeeRepository feeRepository) {
         this.feeRepository = feeRepository;
+    }
+    @Autowired
+    public void setApartmentRepository(ApartmentRepository apartmentRepository){
+        this.apartmentRepository = apartmentRepository;
     }
 
     @GetMapping("fees")
@@ -33,8 +40,10 @@ public class FeeController {
     @GetMapping("feeForm")
     public String feeForm(Model model, @RequestParam(value = "Id", required = false) Long id){
         Fee fee = id != null ? feeRepository.findById(id).orElse(new Fee()) :new Fee();
+        List<Apartment> apartments = apartmentRepository.findAll();
 
         model.addAttribute("fee", fee);
+        model.addAttribute("apartments", apartments);
 
         return "fees/feeForm";
     }

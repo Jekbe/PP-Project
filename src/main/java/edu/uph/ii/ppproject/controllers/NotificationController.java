@@ -1,7 +1,9 @@
 package edu.uph.ii.ppproject.controllers;
 
 import edu.uph.ii.ppproject.domain.Notification;
+import edu.uph.ii.ppproject.domain.User;
 import edu.uph.ii.ppproject.repositories.NotificationRepository;
+import edu.uph.ii.ppproject.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,10 +17,16 @@ import java.util.List;
 @Controller
 public class NotificationController {
     private NotificationRepository notificationRepository;
+    private UserRepository userRepository;
 
     @Autowired
     public void setNotificationRepository(NotificationRepository notificationRepository){
         this.notificationRepository = notificationRepository;
+    }
+
+    @Autowired
+    public void setUserRepository(UserRepository userRepository){
+        this.userRepository = userRepository;
     }
 
     @GetMapping("notifications")
@@ -27,16 +35,18 @@ public class NotificationController {
 
         model.addAttribute("notifications", notifications);
 
-        return "notifications/notification";
+        return "notifications/notifications";
     }
 
     @GetMapping("notifictionForm")
     public String notifictionForm(Model model, @RequestParam(value = "Id", required = false) Long id){
         Notification notification = id != null ? notificationRepository.findById(id).orElse(new Notification()) : new Notification();
+        List<User> users = userRepository.findAll();
 
         model.addAttribute("notification", notification);
+        model.addAttribute("users", users);
 
-        return "notifications/notifictionForm";
+        return "notifications/notificationForm";
     }
 
     @RequestMapping("addNotification")

@@ -5,6 +5,22 @@
     <title>Nowa Rola</title>
 </head>
 <body>
+    <h1 th:text="${role.id == null ? 'Add New Role' : 'Edit Role'}"></h1>
 
+    <form th:action="@{/addRole}" th:object="${role}" method="post">
+        <input type="hidden" th:field="*{id}"/>
+
+        <div>
+            <label for="type">Type:</label>
+            <select id="type" th:field="*{type}" required>
+                <option th:each="type : ${types}" th:value="${type}" th:text="${type}"></option>
+            </select>
+        </div>
+
+        <div>
+            <button type="submit">Save</button>
+            <a th:href="@{/roles}">Cancel</a>
+        </div>
+    </form>
 </body>
 </html>

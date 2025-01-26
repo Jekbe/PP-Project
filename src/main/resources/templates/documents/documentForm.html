@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prześlij plik</title>
+</head>
+<body>
+<form th:action="@{/addDocument}" method="post" enctype="multipart/form-data">
+    <label>
+        File:
+        <input type="file" name="file" required>
+    </label>
+    <label>
+        Sender:
+        <select name="senderId" required>
+            <option th:each="user : ${users}" th:value="${user.userId}" th:text="${user}"></option>
+        </select>
+    </label>
+    <label>
+        Recipient:
+        <select name="recipientId" required>
+            <option th:each="user : ${users}" th:value="${user.userId}" th:text="${user}"></option>
+        </select>
+    </label>
+    <input type="submit" value="Upload">
+</form>
+</body>
+</html>

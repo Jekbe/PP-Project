@@ -5,6 +5,33 @@
     <title>Udogodnienia</title>
 </head>
 <body>
+    <h1>Utility List</h1>
 
+    <a th:href="@{/utilityForm}">Add New Utility</a>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="utility : ${utilities}">
+            <td th:text="${utility.utilityId}"></td>
+            <td th:text="${utility.name}"></td>
+            <td th:text="${utility.description}"></td>
+            <td th:text="${utility.price}"></td>
+            <td>
+                <a th:href="@{/utilityInfo(id=${utility.utilityId})}">View</a> |
+                <a th:href="@{/utilityForm(id=${utility.utilityId})}">Edit</a> |
+                <a th:href="@{/deleteUtility(id=${utility.utilityId})}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </body>
 </html>

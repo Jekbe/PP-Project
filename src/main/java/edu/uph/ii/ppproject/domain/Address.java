@@ -8,11 +8,11 @@ import lombok.Setter;
 @Embeddable @Getter @Setter @NoArgsConstructor
 public class Address {
     private String city;
-    private String streat;
+    private String street;
     private String number;
 
     @Override
     public String toString(){
-        return city + " " + streat + " " + number;
+        return city + " " + street + " " + number;
     }
 }

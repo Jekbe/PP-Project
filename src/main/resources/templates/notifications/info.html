@@ -5,6 +5,19 @@
     <title>Szczegóły</title>
 </head>
 <body>
+    <h1>Notification Details</h1>
 
+    <p><strong>Title:</strong> <span th:text="${notification.tittle}"></span></p>
+    <p><strong>Content:</strong> <span th:text="${notification.content}"></span></p>
+    <p><strong>Date:</strong> <span th:text="${notification.date}"></span></p>
+    <p><strong>Users:</strong></p>
+    <ul>
+        <li th:each="user : ${notification.users}" th:text="${user}"></li>
+    </ul>
+
+    <div>
+        <a th:href="@{/notificationForm(notyficationId=${notification.notyficationId})}">Edit</a>
+        <a th:href="@{/notifications}">Back to List</a>
+    </div>
 </body>
 </html>

@@ -5,6 +5,33 @@
     <title>Problemy</title>
 </head>
 <body>
+    <h1>Issue List</h1>
 
+    <a th:href="@{/issueForm}">Add New Issue</a>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Tenant</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="issue : ${issues}">
+            <td th:text="${issue.descryption}"></td>
+            <td th:text="${issue.date}"></td>
+            <td th:text="${issue.status}"></td>
+            <td th:text="${issue.tenant}"></td>
+            <td>
+                <a th:href="@{/issueInfo(issueId=${issue.issueId})}">View</a> |
+                <a th:href="@{/issueForm(issueId=${issue.issueId})}">Edit</a> |
+                <a th:href="@{/deleteIssue(issueId=${issue.issueId})}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </body>
 </html>

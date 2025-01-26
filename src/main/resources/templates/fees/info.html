@@ -5,6 +5,17 @@
     <title>Szczegóły</title>
 </head>
 <body>
+    <h1>Fee Details</h1>
 
+    <p><strong>Title:</strong> <span th:text="${fee.tittle}"></span></p>
+    <p><strong>Amount:</strong> <span th:text="${fee.amount}"></span></p>
+    <p><strong>Maturity Date:</strong> <span th:text="${fee.maturity}"></span></p>
+    <p><strong>Apartment:</strong> <span th:text="${fee.apartment.number}"></span></p>
+    <p><strong>Status:</strong> <span th:text="${fee.status}"></span></p>
+
+    <div>
+        <a th:href="@{/feeForm(feeId=${fee.feeId})}">Edit</a>
+        <a th:href="@{/fees}">Back to List</a>
+    </div>
 </body>
 </html>

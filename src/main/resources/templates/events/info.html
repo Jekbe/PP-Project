@@ -5,6 +5,15 @@
     <title>Szczegóły</title>
 </head>
 <body>
+    <h1>Event Details</h1>
 
+    <p><strong>Name:</strong> <span th:text="${event.name}"></span></p>
+    <p><strong>Building:</strong> <span th:text="${event.building.address.street}"></span></p>
+    <p><strong>Message:</strong> <span th:text="${event.message}"></span></p>
+
+    <div>
+        <a th:href="@{/eventForm(eventId=${event.eventId})}">Edit</a>
+        <a th:href="@{/events}">Back to List</a>
+    </div>
 </body>
 </html>

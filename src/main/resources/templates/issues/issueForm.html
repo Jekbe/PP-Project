@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nowy problem</title>
+</head>
+<body>
+    <h1 th:text="${issue.issueId == null ? 'Add New Issue' : 'Edit Issue'}"></h1>
+
+    <form th:action="@{/addIssue}" th:object="${issue}" method="post">
+        <input type="hidden" th:field="*{issueId}"/>
+
+        <div>
+            <label for="descryption">Description:</label>
+            <textarea id="descryption" th:field="*{descryption}" required></textarea>
+        </div>
+
+        <div>
+            <label for="date">Date:</label>
+            <input type="date" id="date" th:field="*{date}" required/>
+        </div>
+
+        <div>
+            <label for="status">Status:</label>
+            <select id="status" th:field="*{status}" required>
+                <option th:each="status : ${statuses}" th:value="${status}" th:text="${status}"></option>
+            </select>
+        </div>
+
+        <div>
+            <label for="tenant">Tenant:</label>
+            <select id="tenant" th:field="*{tenant}" required>
+                <option th:each="user : ${users}"
+                        th:value="${user}"
+                        th:text="${user}"></option>
+            </select>
+        </div>
+
+        <div>
+            <button type="submit">Save</button>
+            <a th:href="@{/issues}">Cancel</a>
+        </div>
+    </form>
+</body>
+</html>

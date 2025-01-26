@@ -6,6 +6,8 @@ import lombok.Setter;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.AssertTrue;
+
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -18,6 +20,10 @@ public class User {
     private String pesel;
     private String email;
     private String password;
+    @OneToMany
+    private List<Document> myDocuments;
+    @OneToMany
+    private List<Document> documentsToMe;
     private String activationCode = UUID.randomUUID().toString();
     @Transient
     private String passwordConfirm;
