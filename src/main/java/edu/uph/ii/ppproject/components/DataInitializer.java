@@ -53,7 +53,7 @@ public class DataInitializer {
 
             Address address = new Address();
             address.setCity("Siedlce");
-            address.setStreat("3-ego Maja");
+            address.setStreet("3-ego Maja");
             address.setNumber("10");
 
             Building building = new Building();
@@ -70,7 +70,7 @@ public class DataInitializer {
             Building building = buildingRepository.getReferenceById(1L);
 
             Apartment apartment = new Apartment();
-            apartment.setApartmentId(1L);
+            //apartment.setApartmentId(1L);
             apartment.setNumber(1);
             apartment.setArea(50);
             apartment.setPrice(400_000);
@@ -84,7 +84,7 @@ public class DataInitializer {
     InitializingBean UtilityInit(){
         return () -> {
             Utility utility = new Utility();
-            utility.setUtilityId(1L);
+            //utility.setUtilityId(1L);
             utility.setName("Lodówka");
             utility.setPrice(500);
             if (utilityRepository.count() == 0) utilityRepository.save(utility);

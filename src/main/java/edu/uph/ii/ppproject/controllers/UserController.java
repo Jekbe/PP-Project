@@ -14,17 +14,17 @@ import java.util.List;
 @Controller
 public class UserController {
     private UserRepository userRepository;
-    private JavaMailSender mailSender;
+    //private JavaMailSender mailSender;
 
     @Autowired
     public void setUserRepository(UserRepository userRepository){
         this.userRepository = userRepository;
     }
 
-    @Autowired
-    public void setMailSender(JavaMailSender mailSender){
-        this.mailSender = mailSender;
-    }
+//    @Autowired
+//    public void setMailSender(JavaMailSender mailSender){
+//        this.mailSender = mailSender;
+//    }
 
     @GetMapping("/users")
     public String userList (Model model){
@@ -46,7 +46,7 @@ public class UserController {
     @RequestMapping(value = "/addUser", method = RequestMethod.POST)
     public String addUser(@ModelAttribute("user") User user){
         userRepository.save(user);
-        sendSimpleMessage(user.getEmail(), "aktywuj konto", "Kliknij w link, aby aktywować konto: " + "http://localhost:8080/activate?code=" + user.getActivationCode());
+        //sendSimpleMessage(user.getEmail(), "aktywuj konto", "Kliknij w link, aby aktywować konto: " + "http://localhost:8080/activate?code=" + user.getActivationCode());
 
         return "redirect:/users";
     }
@@ -67,24 +67,24 @@ public class UserController {
         return "users/info";
     }
 
-    public void sendSimpleMessage(String to, String subject, String text) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("kari68@ethereal.email");
-        message.setTo(to);
-        message.setSubject(subject);
-        message.setText(text);
-        mailSender.send(message);
-    }
-
-    @GetMapping("/activate")
-    public String activateAccount(@RequestParam("code") String code) {
-        User user = userRepository.findByActivationCode(code);
-
-        if (user != null && !user.isEnabled()) {
-            user.setEnabled(true);
-            userRepository.save(user);
-            return "users/activationSuccess";
-        }
-        return "users/activationError";
-    }
+//    public void sendSimpleMessage(String to, String subject, String text) {
+//        SimpleMailMessage message = new SimpleMailMessage();
+//        message.setFrom("kari68@ethereal.email");
+//        message.setTo(to);
+//        message.setSubject(subject);
+//        message.setText(text);
+//        mailSender.send(message);
+//    }
+//
+//    @GetMapping("/activate")
+//    public String activateAccount(@RequestParam("code") String code) {
+//        User user = userRepository.findByActivationCode(code);
+//
+//        if (user != null && !user.isEnabled()) {
+//            user.setEnabled(true);
+//            userRepository.save(user);
+//            return "users/activationSuccess";
+//        }
+//        return "users/activationError";
+//    }
 }

@@ -55,7 +55,7 @@ public class ApartmentController {
 
         apartmentRepository.save(apartment);
 
-        return "redirect:/apartments";
+        return "redirect:/apartments?Id=" + buildingId;
     }
 
     @GetMapping("deleteApartment")
