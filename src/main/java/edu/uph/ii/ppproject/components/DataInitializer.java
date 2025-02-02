@@ -154,7 +154,7 @@ public class DataInitializer {
             Notification notification = new Notification();
             notification.setTittle("Witamy");
             notification.setContent("Witamy nowych mieszkańców naszego bloku");
-            notification.addUser(userRepository.getReferenceById(1L));
+            notification.setUser(userRepository.getReferenceById(1L));
             if (notificationRepository.count() == 0) notificationRepository.save(notification);
         };
     }
