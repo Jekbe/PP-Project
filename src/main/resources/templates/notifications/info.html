@@ -1,23 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Szczegóły</title>
 </head>
 <body>
-    <h1>Notification Details</h1>
+    <h1>Szczegóły</h1>
 
-    <p><strong>Title:</strong> <span th:text="${notification.tittle}"></span></p>
-    <p><strong>Content:</strong> <span th:text="${notification.content}"></span></p>
-    <p><strong>Date:</strong> <span th:text="${notification.date}"></span></p>
-    <p><strong>Users:</strong></p>
-    <ul>
-        <li th:each="user : ${notification.users}" th:text="${user}"></li>
-    </ul>
+    <p><strong>Tytuł:</strong> <span th:text="${notification.tittle}"/></p>
+    <p><strong>Zawartość:</strong> <span th:text="${notification.content}"/></p>
+    <p><strong>Urzytkownik:</strong> <span th:text="${notification.user}"></span></p>
 
     <div>
-        <a th:href="@{/notificationForm(notyficationId=${notification.notyficationId})}">Edit</a>
-        <a th:href="@{/notifications}">Back to List</a>
+        <a th:href="@{/notificationForm(notyficationId=${notification.notyficationId})}">Edytuj</a>
+        <a th:href="@{/notifications}">Powrót</a>
     </div>
 </body>
 </html>

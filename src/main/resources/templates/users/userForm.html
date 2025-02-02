@@ -8,49 +8,26 @@
     <h1>Rejestracja użytkownika</h1>
     <form th:method="POST" th:object="${user}" th:action="@{/addUser}">
         <input type="hidden" th:field="*{userId}">
-
-        <!-- Imię -->
         <label>
             Imię:
             <input type="text" th:field="*{firstName}" placeholder="Podaj imię" required>
-        </label>
-        <br>
-
-        <!-- Nazwisko -->
+        </label><br>
         <label>
             Nazwisko:
             <input type="text" th:field="*{lastName}" placeholder="Podaj nazwisko" required>
-        </label>
-        <br>
-
-        <!-- PESEL -->
+        </label><br>
         <label>
             PESEL:
             <input type="text" th:field="*{pesel}" placeholder="Podaj PESEL">
-        </label>
-        <br>
-
-        <!-- Email -->
+        </label><br>
         <label>
             Email:
             <input type="email" th:field="*{email}" placeholder="Podaj adres email" required>
-        </label>
-        <br>
-
-        <!-- Hasło -->
+        </label><br>
         <label>
             Hasło:
             <input type="password" th:field="*{password}" placeholder="Podaj hasło" required>
-        </label>
-        <br>
-
-        <!-- Potwierdzenie hasła -->
-        <label>
-            Potwierdź hasło:
-            <input type="password" th:field="*{passwordConfirm}" placeholder="Potwierdź hasło" required>
-        </label>
-        <br>
-
+        </label><br>
         <input type="submit" value="Zarejestruj">
     </form>
 </body>

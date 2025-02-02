@@ -5,18 +5,18 @@
     <title>Szczegóły</title>
 </head>
 <body>
-    <h1>Role Details</h1>
+    <h1>Szczegóły</h1>
 
-    <p><strong>ID:</strong> <span th:text="${role.id}"></span></p>
-    <p><strong>Type:</strong> <span th:text="${role.type}"></span></p>
-    <p><strong>Users:</strong></p>
+    <p><strong>ID:</strong> <span th:text="${role.id}"/></p>
+    <p><strong>Typ:</strong> <span th:text="${role.type}"/></p>
+    <p><strong>Urzytkownicy:</strong></p>
     <ul>
-        <li th:each="user : ${role.users}" th:text="${user}"></li>
+        <li th:each="user : ${role.users}" th:text="${user}"/>
     </ul>
 
     <div>
-        <a th:href="@{/roleForm(id=${role.id})}">Edit</a>
-        <a th:href="@{/roles}">Back to List</a>
+        <a th:href="@{/roleForm(id=${role.id})}">Edytuj</a>
+        <a th:href="@{/roles}">Powrót</a>
     </div>
 </body>
 </html>

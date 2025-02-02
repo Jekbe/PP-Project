@@ -23,6 +23,7 @@ public class FeeController {
     public void setFeeRepository(FeeRepository feeRepository) {
         this.feeRepository = feeRepository;
     }
+
     @Autowired
     public void setApartmentRepository(ApartmentRepository apartmentRepository){
         this.apartmentRepository = apartmentRepository;
@@ -49,7 +50,9 @@ public class FeeController {
     }
 
     @RequestMapping("addFee")
-    public String addFee(@ModelAttribute("fee") Fee fee){
+    public String addFee(@ModelAttribute("fee") Fee fee, @RequestParam("apartment") Long apartmentId) {
+        fee.setApartment(apartmentRepository.findById(apartmentId).orElse(null));
+
         feeRepository.save(fee);
 
         return "redirect:/fees";

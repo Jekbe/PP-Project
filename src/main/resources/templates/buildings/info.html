@@ -9,15 +9,15 @@
 
     <div>
         <h2>Podstawowe informacje</h2>
-        <p><strong>Adres:</strong> <span th:text="${building.address}"></span></p>
-        <p><strong>Manager:</strong> <span th:text="${building.manager}"></span></p>
+        <p><strong>Adres:</strong> <span th:text="${building.address}"/></p>
+        <p><strong>Manager:</strong> <span th:text="${building.manager}"/></p>
     </div>
 
     <div>
         <h2>Apartamenty</h2>
         <ul>
             <li th:each="apartment : ${building.apartments}">
-                <a th:href="@{/apartmentInfo(Id=${apartment.apartmentId})}" th:text="'Numer ' + ${apartment.number}"></a>
+                <a th:href="@{/apartmentInfo(Id=${apartment.apartmentId})}" th:text="'Numer ' + ${apartment.number}"/>
             </li>
         </ul>
     </div>

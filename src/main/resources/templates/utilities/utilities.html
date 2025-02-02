@@ -5,33 +5,35 @@
     <title>Udogodnienia</title>
 </head>
 <body>
-    <h1>Utility List</h1>
+    <h1>Udogodnienia</h1>
 
-    <a th:href="@{/utilityForm}">Add New Utility</a>
+    <a th:href="@{/utilityForm}">Dodaj nowe udogodnienie</a>
 
-    <table>
+    <table border="1">
         <thead>
         <tr>
             <th>ID</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Actions</th>
+            <th>Nazwa</th>
+            <th>Opis</th>
+            <th>Cena</th>
+            <th>Szczegóły</th>
+            <th>Edytuj</th>
+            <th>Usuń</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="utility : ${utilities}">
-            <td th:text="${utility.utilityId}"></td>
-            <td th:text="${utility.name}"></td>
-            <td th:text="${utility.description}"></td>
-            <td th:text="${utility.price}"></td>
-            <td>
-                <a th:href="@{/utilityInfo(id=${utility.utilityId})}">View</a> |
-                <a th:href="@{/utilityForm(id=${utility.utilityId})}">Edit</a> |
-                <a th:href="@{/deleteUtility(id=${utility.utilityId})}">Delete</a>
-            </td>
+            <td th:text="${utility.utilityId}"/>
+            <td th:text="${utility.name}"/>
+            <td th:text="${utility.description}"/>
+            <td th:text="${utility.price}"/>
+            <td><a th:href="@{/utilityInfo(Id=${utility.utilityId})}">Szczegóły</a> </td>
+            <td><a th:href="@{/utilityForm(Id=${utility.utilityId})}">Edytuj</a></td>
+            <td><a th:href="@{/deleteUtility(Id=${utility.utilityId})}">Usuń</a></td>
         </tr>
         </tbody>
     </table>
+
+    <a th:href="@{/}">strona główna</a>
 </body>
 </html>

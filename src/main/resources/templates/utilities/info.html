@@ -5,16 +5,16 @@
     <title>Szczegóły</title>
 </head>
 <body>
-    <h1>Utility Details</h1>
+    <h1>Szczegóły</h1>
 
-    <p><strong>ID:</strong> <span th:text="${utility.utilityId}"></span></p>
-    <p><strong>Name:</strong> <span th:text="${utility.name}"></span></p>
-    <p><strong>Description:</strong> <span th:text="${utility.description}"></span></p>
-    <p><strong>Price:</strong> <span th:text="${utility.price}"></span></p>
+    <p><strong>ID:</strong> <span th:text="${utility.utilityId}"/></p>
+    <p><strong>Nazwa:</strong> <span th:text="${utility.name}"/></p>
+    <p><strong>Opis:</strong> <span th:text="${utility.description}"/></p>
+    <p><strong>Cena:</strong> <span th:text="${utility.price}"/></p>
 
     <div>
-        <a th:href="@{/utilityForm(id=${utility.utilityId})}">Edit</a>
-        <a th:href="@{/utilities}">Back to List</a>
+        <a th:href="@{/utilityForm(id=${utility.utilityId})}">Edytuj</a>
+        <a th:href="@{/utilities}">Powrót</a>
     </div>
 </body>
 </html>

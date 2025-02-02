@@ -59,6 +59,9 @@ public class DocumentController {
         document.setUploadDate(new Date());
         document.setFileType(file.getContentType());
         document.setFileContent(file.getBytes());
+        document.setSender(userRepository.findById(senderId).orElse(null));
+        document.setRecipient(userRepository.findById(recipientId).orElse(null));
+
         documentRepository.save(document);
         return "redirect:/documents";
     }

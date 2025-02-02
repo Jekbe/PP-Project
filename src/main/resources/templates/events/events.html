@@ -6,29 +6,31 @@
 <body>
     <h1>Wydarzenia</h1>
 
-    <a th:href="@{/eventForm}">Add New Event</a>
+    <a th:href="@{/eventForm}">Dodaj nowe</a>
 
-    <table>
+    <table border="1">
         <thead>
-        <tr>
-            <th>Name</th>
-            <th>Building</th>
-            <th>Message</th>
-            <th>Actions</th>
-        </tr>
+            <tr>
+                <th>Nazwa</th>
+                <th>Budynek</th>
+                <th>Wiadomość</th>
+                <th>Szczegóły</th>
+                <th>Edytuj</th>
+                <th>Usuń</th>
+            </tr>
         </thead>
         <tbody>
-        <tr th:each="event : ${events}">
-            <td th:text="${event.name}"></td>
-            <td th:text="${event.building.address.street}"></td> <!-- Assuming building has an address -->
-            <td th:text="${event.message}"></td>
-            <td>
-                <a th:href="@{/eventInfo(eventId=${event.eventId})}">View</a> |
-                <a th:href="@{/eventForm(eventId=${event.eventId})}">Edit</a> |
-                <a th:href="@{/deleteEvent(eventId=${event.eventId})}">Delete</a>
-            </td>
-        </tr>
+            <tr th:each="event : ${events}">
+                <td th:text="${event.name}"/>
+                <td th:text="${event.building.address}"/>
+                <td th:text="${event.message}"/>
+                <td><a th:href="@{/eventInfo(eventId=${event.eventId})}">Szczegóły</a></td>
+                <td><a th:href="@{/eventForm(eventId=${event.eventId})}">Edytuj</a></td>
+                <td><a th:href="@{/deleteEvent(eventId=${event.eventId})}">Usuń</a></td>
+            </tr>
         </tbody>
     </table>
+
+    <a th:href="@{/}">strona główna</a>
 </body>
 </html>

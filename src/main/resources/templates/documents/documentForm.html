@@ -7,19 +7,19 @@
 <body>
 <form th:action="@{/addDocument}" method="post" enctype="multipart/form-data">
     <label>
-        File:
+        Plik:
         <input type="file" name="file" required>
     </label>
     <label>
-        Sender:
+        Od:
         <select name="senderId" required>
-            <option th:each="user : ${users}" th:value="${user.userId}" th:text="${user}"></option>
+            <option th:each="user : ${users}" th:value="${user.userId}" th:text="${user}"/>
         </select>
     </label>
     <label>
-        Recipient:
+        Do:
         <select name="recipientId" required>
-            <option th:each="user : ${users}" th:value="${user.userId}" th:text="${user}"></option>
+            <option th:each="user : ${users}" th:value="${user.userId}" th:text="${user}"/>
         </select>
     </label>
     <input type="submit" value="Upload">

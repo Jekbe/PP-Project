@@ -7,33 +7,35 @@
 <body>
     <h1>Fee List</h1>
 
-    <a th:href="@{/feeForm}">Add New Fee</a>
+    <a th:href="@{/feeForm}">Dodaj nowe</a>
 
-    <table>
+    <table border="1">
         <thead>
             <tr>
-                <th>Title</th>
-                <th>Amount</th>
-                <th>Maturity Date</th>
-                <th>Apartment</th>
+                <th>Tytuł</th>
+                <th>Wrtość</th>
+                <th>Termin płatność</th>
+                <th>mieszkanie</th>
                 <th>Status</th>
-                <th>Actions</th>
+                <th>Szczegóły</th>
+                <th>Edytuj</th>
+                <th>Usuń</th>
             </tr>
         </thead>
         <tbody>
             <tr th:each="fee : ${fees}">
-                <td th:text="${fee.tittle}"></td>
-                <td th:text="${fee.amount}"></td>
-                <td th:text="${fee.maturity}"></td>
-                <td th:text="${fee.apartment.number}"></td>
-                <td th:text="${fee.status}"></td>
-                <td>
-                    <a th:href="@{/feeInfo(feeId=${fee.feeId})}">View</a> |
-                    <a th:href="@{/feeForm(feeId=${fee.feeId})}">Edit</a> |
-                    <a th:href="@{/deleteFee(feeId=${fee.feeId})}">Delete</a>
-                </td>
+                <td th:text="${fee.tittle}"/>
+                <td th:text="${fee.amount}"/>
+                <td th:text="${fee.maturity}"/>
+                <td th:text="${fee.apartment.number}"/>
+                <td th:text="${fee.status}"/>
+                <td><a th:href="@{/feeInfo(feeId=${fee.feeId})}">Szczegóły</a></td>
+                <td><a th:href="@{/feeForm(feeId=${fee.feeId})}">Edytuj</a></td>
+                <td><a th:href="@{/deleteFee(feeId=${fee.feeId})}">Usuń</a></td>
             </tr>
         </tbody>
     </table>
+
+    <a th:href="@{/}">strona główna</a>
 </body>
 </html>

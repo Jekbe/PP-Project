@@ -49,7 +49,9 @@ public class EventController {
     }
 
     @RequestMapping("/addEvent")
-    public String addEvent(@ModelAttribute("event") Event event){
+    public String addEvent(@ModelAttribute("event") Event event, @RequestParam("building") Long buildingId){
+        event.setBuilding(buildingRepository.findById(buildingId).orElse(null));
+
         eventRepository.save(event);
 
         return "redirect:/events";

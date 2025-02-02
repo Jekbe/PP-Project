@@ -5,17 +5,17 @@
     <title>Szczegóły</title>
 </head>
 <body>
-    <h1>User Details</h1>
+    <h1>Szczegóły</h1>
 
-    <p><strong>ID:</strong> <span th:text="${user.userId}"></span></p>
-    <p><strong>First Name:</strong> <span th:text="${user.firstName}"></span></p>
-    <p><strong>Last Name:</strong> <span th:text="${user.lastName}"></span></p>
-    <p><strong>Email:</strong> <span th:text="${user.email}"></span></p>
-    <p><strong>Roles:</strong> <span th:each="role : ${user.roles}" th:text="${role.type}"></span></p>
+    <p><strong>ID:</strong> <span th:text="${user.userId}"/></p>
+    <p><strong>Imię:</strong> <span th:text="${user.firstName}"/></p>
+    <p><strong>Nazwisko:</strong> <span th:text="${user.lastName}"/></p>
+    <p><strong>Email:</strong> <span th:text="${user.email}"/></p>
+    <p><strong>Rola:</strong> <span th:each="role : ${user.roles}" th:text="${role.type}"/></p>
 
     <div>
-        <a th:href="@{/userForm(id=${user.userId})}">Edit</a>
-        <a th:href="@{/users}">Back to List</a>
+        <a th:href="@{/userForm(id=${user.userId})}">Edytuj</a>
+        <a th:href="@{/users}">Powrót</a>
     </div>
 </body>
 </html>

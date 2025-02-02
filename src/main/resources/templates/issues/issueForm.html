@@ -5,40 +5,38 @@
     <title>Nowy problem</title>
 </head>
 <body>
-    <h1 th:text="${issue.issueId == null ? 'Add New Issue' : 'Edit Issue'}"></h1>
+    <h1 th:text="${issue.issueId == null ? 'Add New Issue' : 'Edit Issue'}"/>
 
     <form th:action="@{/addIssue}" th:object="${issue}" method="post">
         <input type="hidden" th:field="*{issueId}"/>
 
         <div>
-            <label for="descryption">Description:</label>
-            <textarea id="descryption" th:field="*{descryption}" required></textarea>
+            <label for="descryption">Opis:</label>
+            <textarea id="descryption" th:field="*{descryption}" required/>
         </div>
 
         <div>
-            <label for="date">Date:</label>
+            <label for="date">Dta:</label>
             <input type="date" id="date" th:field="*{date}" required/>
         </div>
 
         <div>
             <label for="status">Status:</label>
             <select id="status" th:field="*{status}" required>
-                <option th:each="status : ${statuses}" th:value="${status}" th:text="${status}"></option>
+                <option th:each="status : ${statuses}" th:value="${status}" th:text="${status}"/>
             </select>
         </div>
 
         <div>
-            <label for="tenant">Tenant:</label>
+            <label for="tenant">Loktor:</label>
             <select id="tenant" th:field="*{tenant}" required>
-                <option th:each="user : ${users}"
-                        th:value="${user}"
-                        th:text="${user}"></option>
+                <option th:each="user : ${users}" th:value="${user.userId}" th:text="${user}"/>
             </select>
         </div>
 
         <div>
-            <button type="submit">Save</button>
-            <a th:href="@{/issues}">Cancel</a>
+            <button type="submit">Zapisz</button>
+            <a th:href="@{/issues}">Anuluj</a>
         </div>
     </form>
 </body>

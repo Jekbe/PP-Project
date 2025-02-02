@@ -5,32 +5,30 @@
     <title>Nowa opłata</title>
 </head>
 <body>
-    <h1 th:text="${fee.feeId == null ? 'Add New Fee' : 'Edit Fee'}"></h1>
+    <h1 th:text="${fee.feeId == null ? 'Dodaj nową' : 'Edytuj'}"/>
 
     <form th:action="@{/addFee}" th:object="${fee}" method="post">
         <input type="hidden" th:field="*{feeId}"/>
 
         <div>
-            <label for="tittle">Title:</label>
+            <label for="tittle">Tytuł:</label>
             <input type="text" id="tittle" th:field="*{tittle}" required/>
         </div>
 
         <div>
-            <label for="amount">Amount:</label>
+            <label for="amount">Wysokość:</label>
             <input type="number" id="amount" th:field="*{amount}" step="0.01" required/>
         </div>
 
         <div>
-            <label for="maturity">Maturity Date:</label>
+            <label for="maturity">Data płatności:</label>
             <input type="date" id="maturity" th:field="*{maturity}" required/>
         </div>
 
         <div>
-            <label for="apartment">Apartment:</label>
+            <label for="apartment">Mieszkanie:</label>
             <select id="apartment" th:field="*{apartment}" required>
-                <option th:each="apartment : ${apartments}"
-                        th:value="${apartment}"
-                        th:text="${apartment.number}"></option>
+                <option th:each="apartment : ${apartments}" th:value="${apartment.apartmentId}" th:text="${apartment.number}"/>
             </select>
         </div>
 
@@ -43,8 +41,8 @@
         </div>
 
         <div>
-            <button type="submit">Save</button>
-            <a th:href="@{/fees}">Cancel</a>
+            <button type="submit">Zapisz</button>
+            <a th:href="@{/fees}">Anuluj</a>
         </div>
     </form>
 </body>

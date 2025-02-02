@@ -9,22 +9,22 @@
 
     <div>
         <h2>Podstawowe informacje</h2>
-        <p><strong>Numer:</strong> <span th:text="${apartment.number}"></span></p>
-        <p><strong>Powierzchnia:</strong> <span th:text="${apartment.area}"></span> m²</p>
-        <p><strong>Cena:</strong> <span th:text="${apartment.price}"></span> PLN</p>
-        <p><strong>Liczba pokoi:</strong> <span th:text="${apartment.numberOfRooms}"></span></p>
+        <p><strong>Numer:</strong> <span th:text="${apartment.number}"/></p>
+        <p><strong>Powierzchnia:</strong> <span th:text="${apartment.area}"/> m²</p>
+        <p><strong>Cena:</strong> <span th:text="${apartment.price}"/> PLN</p>
+        <p><strong>Liczba pokoi:</strong> <span th:text="${apartment.numberOfRooms}"/></p>
     </div>
 
     <div>
         <h2>Budynek</h2>
-        <p><strong>Adres:</strong> <span th:text="${apartment.building.address}"></span></p>
+        <p><strong>Adres:</strong> <span th:text="${apartment.building.address}"/></p>
     </div>
 
     <div>
         <h2>Najemcy</h2>
         <ul>
             <li th:each="tenant : ${apartment.tenants}">
-                <span th:text="${tenant}"></span>
+                <span th:text="${tenant}"/>
             </li>
         </ul>
     </div>
@@ -41,7 +41,7 @@
             </thead>
             <tbody>
             <tr th:each="fee : ${apartment.fees}">
-                <td th:text="${fee.maturity}"></td>
+                <td th:text="${fee.maturity}"/>
             </tr>
             </tbody>
         </table>
@@ -51,7 +51,7 @@
         <h2>Udogodnienia</h2>
         <ul>
             <li th:each="utility : ${apartment.utilities}">
-                <span th:text="${utility.name}"></span>
+                <span th:text="${utility.name}"/>
             </li>
         </ul>
     </div>

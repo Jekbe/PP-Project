@@ -5,11 +5,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.AssertTrue;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.UUID;
 
 @Entity @Table(name = "users") @Getter @Setter @NoArgsConstructor
 public class User {
@@ -21,28 +21,34 @@ public class User {
     private String email;
     private String password;
     @OneToMany
-    private List<Document> myDocuments;
+    private List<Document> myDocuments = new ArrayList<>();
     @OneToMany
-    private List<Document> documentsToMe;
-    private String activationCode = UUID.randomUUID().toString();
-    @Transient
-    private String passwordConfirm;
-    private boolean enabled = false;
+    private List<Document> documentsToMe = new ArrayList<>();
     @ManyToMany(fetch = FetchType.EAGER) @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
+    private Set<Role> roles = new HashSet<>();
 
-    public User(String email){
-        this(email, false);
+    public void addRole(Role role) {
+        roles.add(role);
     }
 
-    public User(String email, boolean enabled){
-        this.email = email;
-        this.enabled = enabled;
+    public void removeRole(Role role) {
+        roles.remove(role);
     }
 
-    @AssertTrue
-    private boolean isPasswordsEquals(){
-        return password == null || passwordConfirm == null || password.equals(passwordConfirm);
+    public void addMyDocument(Document document) {
+        myDocuments.add(document);
+    }
+
+    public void removeMyDocument(Document document) {
+        myDocuments.remove(document);
+    }
+
+    public void addDocumentsToMe(Document document) {
+        documentsToMe.add(document);
+    }
+
+    public void removeDocumentsToMe(Document document) {
+        documentsToMe.remove(document);
     }
 
     @Override

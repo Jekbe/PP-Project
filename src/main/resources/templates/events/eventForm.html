@@ -5,33 +5,31 @@
     <title>Nowe wydarzenie</title>
 </head>
 <body>
-    <h1 th:text="${event.eventId == null ? 'Add New Event' : 'Edit Event'}"></h1>
+    <h1 th:text="${event.eventId == null ? 'Add New Event' : 'Edit Event'}"/>
 
     <form th:action="@{/addEvent}" th:object="${event}" method="post">
         <input type="hidden" th:field="*{eventId}"/>
 
         <div>
-            <label for="name">Name:</label>
+            <label for="name">Nazwa:</label>
             <input type="text" id="name" th:field="*{name}" required/>
         </div>
 
         <div>
-            <label for="building">Building:</label>
+            <label for="building">Budynek:</label>
             <select id="building" th:field="*{building}" required>
-                <option th:each="building : ${buildings}"
-                        th:value="${building}"
-                        th:text="${building.address}"></option>
+                <option th:each="building : ${buildings}" th:value="${building.buildingId}" th:text="${building.address}"/>
             </select>
         </div>
 
         <div>
-            <label for="message">Message:</label>
-            <textarea id="message" th:field="*{message}" required></textarea>
+            <label for="message">Wiadomość:</label>
+            <textarea id="message" th:field="*{message}" required/>
         </div>
 
         <div>
-            <button type="submit">Save</button>
-            <a th:href="@{/events}">Cancel</a>
+            <button type="submit">Zapisz</button>
+            <a th:href="@{/events}">Anuluj</a>
         </div>
     </form>
 </body>

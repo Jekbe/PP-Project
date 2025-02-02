@@ -5,29 +5,31 @@
     <title>Role</title>
 </head>
 <body>
-    <h1>Role List</h1>
+    <h1>Role</h1>
 
-    <a th:href="@{/roleForm}">Add New Role</a>
+    <a th:href="@{/roleForm}">Dodaj nową rolę</a>
 
-    <table>
+    <table border="1">
         <thead>
-        <tr>
-            <th>ID</th>
-            <th>Type</th>
-            <th>Actions</th>
-        </tr>
+            <tr>
+                <th>ID</th>
+                <th>Typ</th>
+                <th>Szczegóły</th>
+                <th>Edytuj</th>
+                <th>Usuń</th>
+            </tr>
         </thead>
         <tbody>
-        <tr th:each="role : ${roles}">
-            <td th:text="${role.id}"></td>
-            <td th:text="${role.type}"></td>
-            <td>
-                <a th:href="@{/roleInfo(id=${role.id})}">View</a> |
-                <a th:href="@{/roleForm(id=${role.id})}">Edit</a> |
-                <a th:href="@{/deleteRole(id=${role.id})}">Delete</a>
-            </td>
-        </tr>
+            <tr th:each="role : ${roles}">
+                <td th:text="${role.id}"/>
+                <td th:text="${role.type}"/>
+                <td><a th:href="@{/roleInfo(id=${role.id})}">Szczegóły</a></td>
+                <td><a th:href="@{/roleForm(id=${role.id})}">Edytuj</a></td>
+                <td><a th:href="@{/deleteRole(id=${role.id})}">Usuń</a></td>
+            </tr>
         </tbody>
     </table>
+
+    <a th:href="@{/}">strona główna</a>
 </body>
 </html>

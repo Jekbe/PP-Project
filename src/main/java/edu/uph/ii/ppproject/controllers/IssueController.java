@@ -53,7 +53,9 @@ public class IssueController {
     }
 
     @RequestMapping("addIssue")
-    public String addIssue(@ModelAttribute("issue") Issue issue){
+    public String addIssue(@ModelAttribute("issue") Issue issue, @RequestParam("tenant") Long userId){
+        issue.setTenant(userRepository.findById(userId).orElse(null));
+
         issueRepository.save(issue);
 
         return "redirect:/issues";

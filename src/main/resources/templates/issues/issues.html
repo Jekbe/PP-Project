@@ -5,33 +5,35 @@
     <title>Problemy</title>
 </head>
 <body>
-    <h1>Issue List</h1>
+    <h1>Problemy</h1>
 
-    <a th:href="@{/issueForm}">Add New Issue</a>
+    <a th:href="@{/issueForm}">Dodj nowy problem</a>
 
-    <table>
+    <table border="1">
         <thead>
         <tr>
-            <th>Description</th>
-            <th>Date</th>
+            <th>Opis</th>
+            <th>Data</th>
             <th>Status</th>
-            <th>Tenant</th>
-            <th>Actions</th>
+            <th>Lokator</th>
+            <th>Szczegóły</th>
+            <th>Edytuj</th>
+            <th>Usuń</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="issue : ${issues}">
-            <td th:text="${issue.descryption}"></td>
-            <td th:text="${issue.date}"></td>
-            <td th:text="${issue.status}"></td>
-            <td th:text="${issue.tenant}"></td>
-            <td>
-                <a th:href="@{/issueInfo(issueId=${issue.issueId})}">View</a> |
-                <a th:href="@{/issueForm(issueId=${issue.issueId})}">Edit</a> |
-                <a th:href="@{/deleteIssue(issueId=${issue.issueId})}">Delete</a>
-            </td>
+            <td th:text="${issue.descryption}"/>
+            <td th:text="${issue.date}"/>
+            <td th:text="${issue.status}"/>
+            <td th:text="${issue.tenant}"/>
+            <td><a th:href="@{/issueInfo(issueId=${issue.issueId})}">Szczegóły</a></td>
+            <td><a th:href="@{/issueForm(issueId=${issue.issueId})}">Edytuj</a></td>
+            <td><a th:href="@{/deleteIssue(issueId=${issue.issueId})}">Usuń</a></td>
         </tr>
         </tbody>
     </table>
+
+    <a th:href="@{/}">strona główna</a>
 </body>
 </html>
